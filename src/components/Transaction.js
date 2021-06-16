@@ -1,12 +1,12 @@
 import React from "react";
 
-function Transaction() {
+function Transaction({ row }) {
   return (
     <tr>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
+      <td>{row.date}</td>
+      <td>{row.description}</td>
+      <td>{row.category}</td>
+      <td>{row.amount}</td>
     </tr>
   );
 }

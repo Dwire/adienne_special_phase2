@@ -69,6 +69,13 @@
       "category": "Gift",
       "amount": "50",
       "id": 15
+    },
+    {
+      "date": "2021-06-11",
+      "description": "CAKE",
+      "category": "Food",
+      "amount": "40",
+      "id": 16
     }
   ]
 }

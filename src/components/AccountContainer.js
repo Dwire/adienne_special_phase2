@@ -9,12 +9,6 @@ function AccountContainer() {
   const [transactions, setTransactions] = useState([])
   const [search, setSearch] = useState("")
 
-  useEffect(() => {
-    fetch("http://localhost:8001/transactions")
-    .then(res => res.json())
-    .then(data => setTransactions(data))
-  }, [])
-
   function addNewTrans(newObj){
     fetch("http://localhost:8001/transactions", {
       method: "POST",
@@ -49,13 +43,23 @@ function AccountContainer() {
     setTransactions(newArray)
   }
 
-  handleCategory(){
-    //sort alphabetically by category
+  function handleCategory(){
+    let newArray = [...transactions]
+    setTransactions(newArray.sort((a,b) => (a.category > b.category) ? 1 : ((b.category > a.category) ? -1 : 0)))
   }
 
-  handleDescr(){
-    //sort alpha by description
+  function handleDescr(){
+    let newArray = [...transactions]
+    setTransactions(newArray.sort((a,b) => (a.description > b.description) ? 1 : ((b.description > a.description) ? -1 : 0)))
   }
+
+  useEffect(() => {
+    fetch("http://localhost:8001/transactions")
+    .then(res => res.json())
+    .then(data => {
+      setTransactions(data)
+    })
+  }, [])
 
   return (
     <div>

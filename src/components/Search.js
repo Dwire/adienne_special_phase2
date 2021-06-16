@@ -4,7 +4,6 @@ function Search({ runSearch, search }) {
 
   const handleChange = (e) =>{
     runSearch(e.target.value)
-    console.log(e.target.value)
   }
 
   return (

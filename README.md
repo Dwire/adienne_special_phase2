@@ -40,7 +40,7 @@ As a user, I should be able to:
 
 - See a table of the transactions. DONE
 - Fill out and submit the form to add a new transaction. This should add the new transaction to the table **as well as post the new transaction to the backend API for persistence**. DONE
-- Filter transactions by typing into the search bar. Only transactions with a description matching the search term should be shown in the transactions table.
+- Filter transactions by typing into the search bar. Only transactions with a description matching the search term should be shown in the transactions table. DONE
 
 ## Advanced Deliverables
 
@@ -51,4 +51,4 @@ These deliverables are not required to pass the code challenge, but if you have 
 As a user, I should be able to:
 
 - Sort transactions alphabetically by category or description.
-- Delete a transaction which will remove it from the table and delete it from the backend.
+- Delete a transaction which will remove it from the table and delete it from the backend. DONE

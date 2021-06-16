@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
+import Sort from "./Sort"
 
 function AccountContainer() {
 
@@ -35,11 +36,33 @@ function AccountContainer() {
 
   let filtered = transactions.filter(trans => trans.description.toUpperCase().includes(search.toUpperCase()))
 
+  function deleteTrans(id){
+    fetch(`http://localhost:8001/transactions/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(removeTrans(id))
+  }
+
+  function removeTrans(id){
+    const newArray = transactions.filter(single => single.id !== parseInt(id))
+    setTransactions(newArray)
+  }
+
+  handleCategory(){
+    //sort alphabetically by category
+  }
+
+  handleDescr(){
+    //sort alpha by description
+  }
+
   return (
     <div>
       <Search runSearch={runSearch} search={search}/>
       <AddTransactionForm addNewTrans={addNewTrans}/>
-      <TransactionsList transactions={filtered}/>
+      <Sort handleCategory={handleCategory} handleDescr={handleDescr}/>
+      <TransactionsList transactions={filtered} deleteTrans={deleteTrans}/>
     </div>
   );
 }

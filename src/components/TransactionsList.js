@@ -1,9 +1,9 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList({ transactions }) {
+function TransactionsList({ transactions, deleteTrans }) {
 
-  const displayTrans = transactions.map(row => <Transaction key={row.id} row={row}/>)
+  const displayTrans = transactions.map(row => <Transaction key={row.id} row={row} deleteTrans={deleteTrans}/>)
 
   return (
     <table className="ui celled striped padded table">
@@ -20,6 +20,9 @@ function TransactionsList({ transactions }) {
           </th>
           <th>
             <h3 className="ui center aligned header">Amount</h3>
+          </th>
+          <th>
+            <h3 className="ui center aligned header">Delete</h3>
           </th>
         </tr>
         {displayTrans}

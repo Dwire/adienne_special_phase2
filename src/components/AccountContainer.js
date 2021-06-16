@@ -6,6 +6,7 @@ import AddTransactionForm from "./AddTransactionForm";
 function AccountContainer() {
 
   const [transactions, setTransactions] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:8001/transactions")
@@ -14,7 +15,6 @@ function AccountContainer() {
   }, [])
 
   function addNewTrans(newObj){
-    // console.log(newObj)
     fetch("http://localhost:8001/transactions", {
       method: "POST",
       headers: {
@@ -29,21 +29,17 @@ function AccountContainer() {
     })
   }
 
-  function handleSearch(search){
-    console.log(search)
+  function runSearch(search){
+    setSearch(search)
   }
 
-  // function runSearch(search){
-  //   console.log(search)
-    // let newArray = transactions.filter(trans => trans.toUpperCase().includes(search.toUpperCase()))
-    // setTransactions(newArray)
-  // }
+  let filtered = transactions.filter(trans => trans.description.toUpperCase().includes(search.toUpperCase()))
 
   return (
     <div>
-      <Search handleSearch={handleSearch}/>
+      <Search runSearch={runSearch} search={search}/>
       <AddTransactionForm addNewTrans={addNewTrans}/>
-      <TransactionsList transactions={transactions}/>
+      <TransactionsList transactions={filtered}/>
     </div>
   );
 }
